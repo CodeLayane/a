@@ -1,7 +1,9 @@
 /**
  * ========================================
- * Navbar - Barra de Navegação
+ * Navbar - Barra de Navegação Responsiva
  * ========================================
+ * 
+ * Compacta automaticamente ao fazer scroll
  */
 
 import { useState, useEffect } from 'react'
@@ -16,7 +18,7 @@ function Navbar() {
   // Detecta scroll para mudar estilo da navbar
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 100)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -34,15 +36,20 @@ function Navbar() {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-500 glass-nav ${
-        isScrolled ? 'py-2 bg-[#050A18]/90' : 'py-4'
+        isScrolled ? 'py-2 bg-[#050A18]/95 shadow-2xl' : 'py-4 md:py-6'
       }`}
     >
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-4 group">
-            <div className="relative w-24 h-24 md:w-32 md:h-30">
+          <a href="#" className="flex items-center gap-3 md:gap-4 group">
+            {/* Container da logo com tamanho responsivo */}
+            <div className={`relative transition-all duration-500 ${
+              isScrolled 
+                ? 'w-12 h-12 md:w-14 md:h-14' 
+                : 'w-16 h-16 md:w-24 md:h-24'
+            }`}>
               <div className="absolute inset-0 bg-gold-500 rounded-lg blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
               <img 
                 src="/logo.png" 
@@ -53,25 +60,30 @@ function Navbar() {
           </a>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-10">
             {navLinks.map((link) => (
               <a 
                 key={link.href}
                 href={link.href} 
-                className="text-sm font-medium text-gray-300 hover:text-white transition hover:tracking-widest duration-300"
+                className={`font-medium text-gray-300 hover:text-white transition hover:tracking-widest duration-300 ${
+                  isScrolled ? 'text-xs' : 'text-sm'
+                }`}
               >
                 {link.label}
               </a>
             ))}
             
-            {/* Botão Área do Sócio */}
+            {/* Botão Quero Me Associar */}
             <a 
-              href="#" 
-              className="group relative px-6 py-2.5 overflow-hidden rounded-full bg-white/5 border border-white/10 hover:border-gold-500/50 transition-all duration-300"
+              href="#filiar" 
+              className={`group relative overflow-hidden rounded-full bg-gold-500 hover:bg-gold-600 transition-all duration-300 ${
+                isScrolled ? 'px-4 py-2' : 'px-6 py-2.5'
+              }`}
             >
-              <div className="absolute inset-0 w-full h-full bg-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative text-sm font-bold text-gold-400 group-hover:text-gold-300 flex items-center gap-2">
-                <UserCircle size={20} /> ÁREA DO SÓCIO
+              <span className={`relative font-bold text-black flex items-center gap-2 transition-all duration-300 ${
+                isScrolled ? 'text-xs' : 'text-sm'
+              }`}>
+                QUERO ME ASSOCIAR
               </span>
             </a>
           </nav>
@@ -105,10 +117,10 @@ function Navbar() {
             </a>
           ))}
           <a 
-            href="#" 
-            className="text-gold-400 border border-gold-400/30 rounded-full py-3 mt-4 font-bold"
+            href="#filiar" 
+            className="text-black bg-gold-500 hover:bg-gold-600 rounded-full py-3 mt-4 font-bold transition"
           >
-            ÁREA DO SÓCIO
+            QUERO ME ASSOCIAR
           </a>
         </div>
       </div>
