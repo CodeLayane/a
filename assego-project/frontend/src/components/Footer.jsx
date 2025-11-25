@@ -16,13 +16,26 @@ function Footer() {
           
           {/* Logo e Descrição */}
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
+            {/* Logos - ASSEGO e Presidente */}
+            <div className="flex items-center justify-center md:justify-start gap-6 mb-6">
+              {/* Logo ASSEGO */}
               <img 
                 src="/logo.png" 
                 alt="ASSEGO" 
                 className="w-20 h-20 object-contain drop-shadow-lg mix-blend-lighten" 
               />
+              
+              {/* Divisor */}
+              <div className="w-px h-16 bg-white/10"></div>
+              
+              {/* Logo Presidente */}
+              <img 
+                src="/logopre.png" 
+                alt="Presidente - Sub Ten Sérgio" 
+                className="w-40 h-24 object-contain drop-shadow-lg" 
+              />
             </div>
+            
             <p className="text-gray-500 text-sm leading-relaxed">
               A Associação dos Subtenentes e Sargentos do Estado de Goiás (Assego), 
               iniciou sua história de desafios e vitórias em 1956. Ao longo dos anos, 
