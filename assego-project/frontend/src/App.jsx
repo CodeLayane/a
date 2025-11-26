@@ -8,6 +8,7 @@
  */
 
 import { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 // Importar todos os componentes
 import Navbar from './components/Navbar'
@@ -22,36 +23,58 @@ import CTA from './components/CTA'
 import Footer from './components/Footer'
 import SocialButtons from './components/SocialButtons'
 
+// Páginas
+import Diretoria from './pages/Diretoria'
+import Historia from './pages/Historia'
+import ConselhoFiscal from './pages/ConselhoFiscal'
+import Juridico from './pages/Juridico'
+
 // Hook customizado para animações de scroll
 import useScrollReveal from './hooks/useScrollReveal'
 
-function App() {
-  // Ativa as animações de reveal no scroll
+// Componente da página inicial
+function HomePage() {
   useScrollReveal()
+  
+  return (
+    <main>
+      <Hero />
+      <Stats />
+      <Partners />
+      <Infrastructure />
+      <Activities />
+      <Destinations />
+      <Social />
+      <CTA />
+    </main>
+  )
+}
 
+// Layout com Navbar e Footer
+function Layout({ children }) {
   return (
     <>
-      {/* Navegação fixa no topo */}
       <Navbar />
-      
-      {/* Seções da página */}
-      <main>
-        <Hero />
-        <Stats />
-        <Partners />
-        <Infrastructure />
-        <Activities />
-        <Destinations />
-        <Social />
-        <CTA />
-      </main>
-      
-      {/* Rodapé */}
+      {children}
       <Footer />
-      
-      {/* Botões flutuantes das redes sociais */}
       <SocialButtons />
     </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/diretoria" element={<Diretoria />} />
+          <Route path="/historia" element={<Historia />} />
+          <Route path="/conselho-fiscal" element={<ConselhoFiscal />} />
+          <Route path="/juridico" element={<Juridico />} />
+        </Routes>
+      </Layout>
+    </Router>
   )
 }
 
