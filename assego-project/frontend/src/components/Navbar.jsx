@@ -92,7 +92,7 @@ function Navbar() {
       items: [
         { label: 'Podcast ASSEGO', href: '/podcast', isRoute: true },
         { label: 'ASSEGO WebTV', href: 'https://www.youtube.com/@assegooficial1707', external: true },
-        { label: 'Revista ASSEGO', href: '/revista', isRoute: true },
+        { label: 'Revista ASSEGO', href: '/revista.pdf', external: true },
         { label: 'Informativo', href: '/informativo', isRoute: true },
         { label: 'Rádio Voz ASSEGO', href: 'https://player.hdradios.net/player-app-multi-plataforma/7272?app-multi=1764095784', external: true },
       ]

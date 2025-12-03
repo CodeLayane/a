@@ -14,7 +14,7 @@ function ClubGallery() {
   // Fotos do clube (usar fotos reais quando disponíveis)
   const fotos = [
     {
-      src: '/fotos/clube1.jpg',
+      src: '/fotos/clube1.JPG',
       fallback: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1200&q=80',
       titulo: 'Parque Aquático',
       descricao: 'Diversão para toda a família'
@@ -32,19 +32,19 @@ function ClubGallery() {
       descricao: 'Gramado sintético profissional'
     },
     {
-      src: '/fotos/clube4.jpg',
+      src: '/fotos/clube4.JPG',
       fallback: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&q=80',
       titulo: 'Salão de Festas',
       descricao: 'Para suas celebrações'
     },
     {
-      src: '/fotos/clube5.jpg',
+      src: '/fotos/clube5.png',
       fallback: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80',
       titulo: 'Área de Lazer',
       descricao: 'Espaço para relaxar'
     },
     {
-      src: '/fotos/clube6.jpg',
+      src: '/fotos/clube6.png',
       fallback: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80',
       titulo: 'Quiosques',
       descricao: 'Churrasqueiras equipadas'

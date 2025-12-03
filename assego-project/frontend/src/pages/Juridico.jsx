@@ -114,7 +114,7 @@ function Juridico() {
             Departamento <span className="text-blue-400">Jurídico</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-8">
-            Defender seu direito é nossa missão!
+            Defender seu direito, nossa missão!
           </p>
 
           {/* Indicadores do carrossel */}
@@ -332,7 +332,7 @@ function Juridico() {
               <div className="mt-8 md:mt-0">
                 <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
                   <blockquote className="text-xl text-white font-light italic leading-relaxed mb-6">
-                    "Defender seu direito é nossa missão."
+                    "Defender seu direito, nossa missão."
                   </blockquote>
                   <p className="text-gray-300">
                     Sob a coordenação do <strong className="text-white">Tenente Cláudio</strong>, o Departamento Jurídico reafirma diariamente seu compromisso com a defesa dos direitos de todos os associados e suas famílias.

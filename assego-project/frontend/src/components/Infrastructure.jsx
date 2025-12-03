@@ -22,21 +22,21 @@ const facilities = [
     id: 2,
     title: 'Campos Society',
     subtitle: 'Gramado Sintético',
-    image: 'https://images.unsplash.com/photo-1522771753033-632175f8da3b?q=80&w=800',
+    image: 'public/fotos/clube3.jpg',
     size: 'small'
   },
   {
     id: 3,
-    title: 'Hotel de Trânsito',
+    title: 'Hotel',
     subtitle: 'Conforto em Goiânia',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800',
+    image: '/public/foto6.jpg',
     size: 'small'
   },
   {
     id: 4,
     title: 'Salão de Eventos',
     subtitle: 'O cenário perfeito para as celebrações da sua vida.',
-    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=800',
+    image: 'public/fotos/clube7.jpg',
     size: 'wide' // Ocupa 2 colunas
   }
 ]

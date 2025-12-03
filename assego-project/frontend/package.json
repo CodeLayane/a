@@ -13,8 +13,10 @@
     "@phosphor-icons/react": "^2.0.15",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
+    "pdfjs-dist": "^5.4.449",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf": "^10.2.0",
     "react-router-dom": "^6.21.0"
   },
   "devDependencies": {

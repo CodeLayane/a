@@ -67,7 +67,7 @@ function Hero() {
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2">
               <span className="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_10px_#22c55e]"></span>
               <span className="text-xs font-bold tracking-[0.2em] text-gray-300 uppercase">
-                Associação Oficial desde 1956
+                Associação desde 1956
               </span>
             </div>
             

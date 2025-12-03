@@ -11,7 +11,7 @@ const destinations = [
     name: 'Bali Park',
     location: 'Luziânia - GO',
     description: 'A maior praia artificial da América do Sul. Diversão sem limites para toda a família com descontos exclusivos.',
-    image: 'https://images.unsplash.com/photo-1605218427368-35b012180767?q=80&w=800',
+    image: '/public/bally.webp',
     accentColor: 'bg-gold-500',
     exclusive: false
   },
@@ -20,7 +20,7 @@ const destinations = [
     name: 'Lagoa Termas',
     location: 'Caldas Novas - GO',
     description: 'O berço das águas termais. Tradição, natureza e relaxamento no coração de Caldas Novas.',
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800',
+    image: '/public/lagoa.jpg',
     accentColor: 'bg-orange-500',
     exclusive: false
   },
@@ -29,7 +29,7 @@ const destinations = [
     name: 'Hotel Aruanã',
     location: 'Aruanã - GO',
     description: 'Às margens do Rio Araguaia. A pescaria e o descanso que você merece em nossa sede própria.',
-    image: '/public/destinosimagens/foto10.jpg',
+    image: '/public/',
     accentColor: 'bg-green-500',
     exclusive: true
   }

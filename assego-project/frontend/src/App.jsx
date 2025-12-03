@@ -23,7 +23,8 @@ import Social from './components/Social'
 import ClubGallery from './components/ClubGallery'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
-import SocialButtons from './components/Socialbuttons.jsx'
+import SocialButtons from './components/SocialButtons'
+import ScrollToTop from './components/ScrollToTop'
 
 // Páginas
 import Diretoria from './pages/Diretoria'
@@ -35,10 +36,11 @@ import Podcast from './pages/Podcast'
 import Beneficios from './pages/Beneficios'
 import Servicos from './pages/Servicos'
 import Parcerias from './pages/Parcerias'
-import ParqueAquatico from './pages/Parqueaquatico.jsx'
-import HotelAssego from './pages/Hotelassego.jsx'
-import PousadaAruana from './pages/Pousadaaruana.jsx'
-import EspacoAssego from './pages/Espacoassego.jsx'
+import ParqueAquatico from './pages/ParqueAquatico'
+import HotelAssego from './pages/HotelAssego'
+import PousadaAruana from './pages/PousadaAruana'
+import EspacoAssego from './pages/EspacoAssego'
+import Contato from './pages/Contato'
 
 // Hook customizado para animações de scroll
 import useScrollReveal from './hooks/useScrollReveal'
@@ -78,6 +80,7 @@ function Layout({ children }) {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -94,6 +97,7 @@ function App() {
           <Route path="/hotel-assego" element={<HotelAssego />} />
           <Route path="/pousada-aruana" element={<PousadaAruana />} />
           <Route path="/espaco-assego" element={<EspacoAssego />} />
+          <Route path="/contato" element={<Contato />} />
         </Routes>
       </Layout>
     </Router>

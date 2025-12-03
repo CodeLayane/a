@@ -49,7 +49,7 @@ function JuridicoSection() {
             </h2>
             
             <p className="text-blue-100/80 text-lg mb-8 leading-relaxed">
-              Defender seu direito é nossa missão! Um dos pilares mais fortes da ASSEGO, 
+              Defender seu direito, nossa missão! Um dos pilares mais fortes da ASSEGO, 
               tornando-se referência nacional pela eficiência e resultados alcançados em 
               defesa de seus associados.
             </p>

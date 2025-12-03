@@ -1,24 +1,17 @@
 /**
  * ========================================
- * RadioPlayerMobile - Player Mobile Compacto
+ * RadioPlayer - Player de Rádio Customizado
  * ========================================
  */
 
-import { useState, useRef, useEffect } from 'react'
-import { Play, Pause, SpeakerHigh, SpeakerLow, SpeakerNone, Broadcast, Plus, Minus } from '@phosphor-icons/react'
+import { useState, useRef } from 'react'
+import { Play, Pause, Broadcast } from '@phosphor-icons/react'
 
-function RadioPlayerMobile() {
+function RadioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.8)
   const audioRef = useRef(null)
 
   const streamUrl = 'https://sv14.hdradios.net:7272/stream'
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume
-    }
-  }, [volume])
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -29,88 +22,140 @@ function RadioPlayerMobile() {
         setIsPlaying(false)
       } else {
         audioRef.current.src = streamUrl
+        audioRef.current.volume = 0.8
         audioRef.current.play().catch(e => console.log('Autoplay blocked:', e))
         setIsPlaying(true)
       }
     }
   }
 
-  const increaseVolume = () => {
-    const newVolume = Math.min(1, volume + 0.1)
-    setVolume(newVolume)
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume
-    }
-  }
-
-  const decreaseVolume = () => {
-    const newVolume = Math.max(0, volume - 0.1)
-    setVolume(newVolume)
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume
-    }
-  }
-
-  const getVolumeIcon = () => {
-    if (volume === 0) return <SpeakerNone size={14} weight="fill" />
-    if (volume < 0.5) return <SpeakerLow size={14} weight="fill" />
-    return <SpeakerHigh size={14} weight="fill" />
-  }
-
   return (
-    <div className="flex items-center justify-between bg-black/30 border border-white/10 rounded-xl px-3 py-2">
-      <audio ref={audioRef} preload="none" />
+    <>
+      {/* Versão Desktop - com todos os controles */}
+      <div className={`hidden md:flex items-center gap-3 backdrop-blur-md rounded-full px-4 py-2 flex-shrink-0 transition-all duration-500 ${
+        isPlaying 
+          ? 'bg-gradient-to-r from-gold-500/20 to-gold-600/10 border border-gold-500/30 shadow-[0_0_20px_rgba(255,193,7,0.15)]' 
+          : 'bg-black/40 border border-white/10 hover:border-white/20'
+      }`}>
+        {/* Audio Element */}
+        <audio ref={audioRef} preload="none" />
 
-      {/* Ícone + Info */}
-      <div className="flex items-center gap-2">
-        <div className="relative">
-          <img src="/iconeradio.png" alt="Rádio Voz" className="w-8 h-8" />
+        {/* Ícone da Rádio com efeito */}
+        <div className="relative flex-shrink-0">
+          <div className={`absolute inset-0 rounded-full blur-md transition-opacity duration-500 ${
+            isPlaying ? 'bg-gold-500/40 opacity-100' : 'opacity-0'
+          }`}></div>
+          <img 
+            src="/iconeradio.png" 
+            alt="Rádio Voz" 
+            className={`relative w-12 h-12 object-contain transition-transform duration-300 ${
+              isPlaying ? 'scale-110' : ''
+            }`}
+          />
           {isPlaying && (
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></span>
           )}
         </div>
-        <div className="flex flex-col leading-tight">
-          <span className="text-white text-xs font-bold">Rádio Voz ASSEGO</span>
+
+        {/* Info */}
+        <div className="hidden lg:flex flex-col leading-tight">
+          <span className="text-white text-xs font-bold tracking-wide">Rádio Voz ASSEGO</span>
           <span className="text-[10px] flex items-center gap-1">
             {isPlaying ? (
               <>
-                <Broadcast size={10} className="text-green-400" />
-                <span className="text-green-400">AO VIVO</span>
+                <Broadcast size={10} weight="fill" className="text-green-400 animate-pulse" />
+                <span className="text-green-400 font-medium">AO VIVO</span>
               </>
             ) : (
               <span className="text-gray-400">Clique ▶</span>
             )}
           </span>
         </div>
-      </div>
 
-      {/* Controles */}
-      <div className="flex items-center gap-1">
-        {/* Volume */}
-        <button onClick={decreaseVolume} className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white">
-          <Minus size={10} weight="bold" />
-        </button>
-        <span className="text-gray-300">{getVolumeIcon()}</span>
-        <button onClick={increaseVolume} className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white">
-          <Plus size={10} weight="bold" />
-        </button>
-
-        {/* Play/Pause */}
+        {/* Botão Play/Pause */}
         <button
           onClick={togglePlay}
-          className={`flex items-center justify-center w-10 h-10 rounded-full ml-2 ${
-            isPlaying ? 'bg-gold-500' : 'bg-[#000e72]'
+          className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:scale-110 flex-shrink-0 overflow-hidden ${
+            isPlaying 
+              ? 'bg-gradient-to-br from-gold-400 to-gold-600 shadow-[0_0_15px_rgba(255,193,7,0.4)]' 
+              : 'bg-gradient-to-br from-[#000e72] to-[#001090] hover:shadow-[0_0_15px_rgba(0,14,114,0.5)]'
+          }`}
+          title={isPlaying ? 'Pausar' : 'Ouvir Rádio'}
+        >
+          {/* Efeito de brilho interno */}
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 rounded-full"></div>
+          
+          {isPlaying ? (
+            <Pause size={18} weight="fill" className="relative text-black" />
+          ) : (
+            <Play size={18} weight="fill" className="relative text-white ml-0.5" />
+          )}
+        </button>
+
+        {/* Indicador de onda sonora animada */}
+        {isPlaying && (
+          <div className="hidden xl:flex items-end gap-0.5 h-5">
+            <span className="w-1 bg-gradient-to-t from-gold-600 to-gold-400 rounded-full animate-[soundwave_0.5s_ease-in-out_infinite]" style={{ height: '40%' }}></span>
+            <span className="w-1 bg-gradient-to-t from-gold-600 to-gold-400 rounded-full animate-[soundwave_0.5s_ease-in-out_infinite_0.1s]" style={{ height: '80%' }}></span>
+            <span className="w-1 bg-gradient-to-t from-gold-600 to-gold-400 rounded-full animate-[soundwave_0.5s_ease-in-out_infinite_0.2s]" style={{ height: '50%' }}></span>
+            <span className="w-1 bg-gradient-to-t from-gold-600 to-gold-400 rounded-full animate-[soundwave_0.5s_ease-in-out_infinite_0.3s]" style={{ height: '90%' }}></span>
+            <span className="w-1 bg-gradient-to-t from-gold-600 to-gold-400 rounded-full animate-[soundwave_0.5s_ease-in-out_infinite_0.4s]" style={{ height: '60%' }}></span>
+          </div>
+        )}
+      </div>
+
+      {/* Versão Mobile - SIMPLIFICADA (sem controles de volume) */}
+      <div className={`flex md:hidden items-center gap-3 backdrop-blur-md rounded-full px-3 py-2 flex-shrink-0 transition-all duration-500 ${
+        isPlaying 
+          ? 'bg-gradient-to-r from-gold-500/20 to-gold-600/10 border border-gold-500/30' 
+          : 'bg-black/40 border border-white/10'
+      }`}>
+        {/* Ícone da Rádio */}
+        <div className="relative flex-shrink-0">
+          <img 
+            src="/iconeradio.png" 
+            alt="Rádio Voz" 
+            className="relative w-10 h-10 object-contain"
+          />
+          {isPlaying && (
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          )}
+        </div>
+
+        {/* Info Compacta */}
+        <div className="flex flex-col leading-tight flex-1 min-w-0">
+          <span className="text-white text-xs font-bold truncate">Rádio Voz ASSEGO</span>
+          <span className="text-[10px]">
+            {isPlaying ? (
+              <span className="text-green-400 font-medium flex items-center gap-1">
+                <Broadcast size={10} weight="fill" className="animate-pulse" />
+                AO VIVO
+              </span>
+            ) : (
+              <span className="text-gray-400">Clique ▶</span>
+            )}
+          </span>
+        </div>
+
+        {/* Botão Play/Pause - SEM controles de volume */}
+        <button
+          onClick={togglePlay}
+          className={`relative flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 flex-shrink-0 overflow-hidden ${
+            isPlaying 
+              ? 'bg-gradient-to-br from-gold-400 to-gold-600' 
+              : 'bg-gradient-to-br from-[#000e72] to-[#001090]'
           }`}
         >
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 rounded-full"></div>
           {isPlaying ? (
-            <Pause size={16} weight="fill" className="text-black" />
+            <Pause size={16} weight="fill" className="relative text-black" />
           ) : (
-            <Play size={16} weight="fill" className="text-white ml-0.5" />
+            <Play size={16} weight="fill" className="relative text-white ml-0.5" />
           )}
         </button>
       </div>
-    </div>
+    </>
   )
 }
 
-export default RadioPlayerMobile
+export default RadioPlayer
