@@ -26,10 +26,10 @@ const destinations = [
   },
   {
     id: 3,
-    name: 'Hotel Aruanã',
+    name: 'Pousada Aruanã',
     location: 'Aruanã - GO',
     description: 'Às margens do Rio Araguaia. A pescaria e o descanso que você merece em nossa sede própria.',
-    image: '/public/',
+    image: '/public/aruana.jpg',
     accentColor: 'bg-green-500',
     exclusive: true
   }
